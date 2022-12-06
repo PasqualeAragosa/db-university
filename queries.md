@@ -123,3 +123,15 @@ JOIN `departments`
 ON `degrees`.`department_id` = `departments`.`id`
 ORDER BY `students`.`surname` ASC;
 ```
+
+Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
+```sql
+SELECT `degrees`.`name` AS `corso_laurea`, `courses`.`name` AS `corso`, `teachers`.`name` AS `teacher_name`, `teachers`.`surname` AS `teacher_surname`
+FROM `degrees`
+JOIN `courses`
+ON `degree_id` = `degrees`.`id`
+JOIN `course_teacher`
+ON `course_id` = `courses`.`id`
+JOIN `teachers`
+ON `teacher_id` = `teachers`.`id`;
+```
