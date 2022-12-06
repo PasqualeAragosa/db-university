@@ -150,3 +150,15 @@ JOIN `teachers`
 ON `teacher_id` = `teachers`.`id`
 WHERE `departments`.`name` = 'Dipartimento di Matematica';
 ```
+
+BONUS: Selezionare per ogni studente quanti tentativi d’esame ha sostenuto per superare ciascuno dei suoi esami
+```sql
+SELECT `students`.`name` AS `student_name`, `students`.`surname` AS `student_surname`, COUNT (`exam_student`.`vote`) AS `attempts`
+FROM `students`
+JOIN `exam_student`
+ON `students`.`id` = `student_id`
+JOIN `exams`
+ON `exam_id` = `exams`.`id`
+JOIN `courses`
+ON `course_id` = `courses`.`id`;
+```
